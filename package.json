@@ -4,7 +4,7 @@
   "description": "A JS implementation of JSONQL",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha test/*.js --require babel-core/register",
     "build": "tsc"
   },
   "repository": {
@@ -21,6 +21,10 @@
   },
   "homepage": "https://github.com/ayrtonvwf/jsonql-js#readme",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2",
     "typescript": "^3.4.1"
   }
 }

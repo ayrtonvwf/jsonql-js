@@ -1,0 +1,64 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "cars": [
+      {
+        "id":  1,
+        "maker": "Chevrolett",
+        "model": "Chevette",
+        "repairs": [
+          {
+            "id": 1,
+            "description": "Fix engine not starting",
+            "price": 100
+          }, {
+            "id": 2,
+            "description": "Recover from crash",
+            "price": 5000
+          }, {
+            "id": 3,
+            "description": "Refactor the engine",
+            "price": 3000
+          }
+        ]
+      }
+    ]
+  }, {
+  "id": 2,
+  "name": "Marie Doe",
+  "cars": [
+    {
+      "id": 2,
+      "maker": "Renault",
+      "model": "Sentra",
+      "repairs": []
+    }, {
+      "id": 3,
+      "maker": "Tesla",
+      "model": "Model S",
+      "repairs": [
+        {
+          "id": 4,
+          "description": "Replaced batery",
+          "price": 3700
+        }
+      ]
+    }
+  ]
+}, {
+  "id": 3,
+  "name": "Philip Doe",
+  "cars": [
+    {
+      "id": 4,
+      "maker": "Chevrolett",
+      "model": "Vectra"
+    }
+  ]
+}, {
+  "id": 4,
+  "name": "Mark Ether",
+  "cars": []
+}
+]
