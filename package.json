@@ -4,7 +4,8 @@
   "description": "A JS implementation of JSONQL",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -18,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/ayrtonvwf/jsonql-js/issues"
   },
-  "homepage": "https://github.com/ayrtonvwf/jsonql-js#readme"
+  "homepage": "https://github.com/ayrtonvwf/jsonql-js#readme",
+  "devDependencies": {
+    "typescript": "^3.4.1"
+  }
 }
