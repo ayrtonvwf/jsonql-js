@@ -72,8 +72,8 @@ function resolveOperation(value: any, operation: Operation, over: any): boolean 
 
 function filterConditional(data: Data, conditional: Conditional): Data {
     if (conditional.value.length === 1) {
-        return data.filter((value: any) =>
-            resolveOperation(value, conditional.operation, conditional.over)
+        return data.filter((object: { [key: string]: any }) =>
+            resolveOperation(object[conditional.value[0]], conditional.operation, conditional.over)
         )
     }
 
@@ -101,7 +101,7 @@ function resolveAndConditionals(data: Data, conditions: (string|Conditions)[], n
             if (conditional === undefined) {
                 throw new Error("Unknown named conditional");
             }
-            data = filterConditional(data, conditional)
+            data = filterConditional(data, conditional);
         } else {
             data = resolveConditions(data, condition, namedConditionals)
         }
@@ -110,18 +110,36 @@ function resolveAndConditionals(data: Data, conditions: (string|Conditions)[], n
     return data
 }
 
+function resolveOrConditionals(data: Data, conditions: (string|Conditions)[], namedConditionals: Conditional[]): Data {
+    let result: Data = [];
+
+    for (const condition of conditions) {
+        if (typeof condition === 'string') {
+            const conditional = namedConditionals.find(namedConditional => namedConditional.name === condition);
+            if (conditional === undefined) {
+                throw new Error("Unknown named conditional");
+            }
+            result = result.concat(filterConditional(data, conditional));
+        } else {
+            result = result.concat(resolveConditions(data, condition, namedConditionals));
+        }
+    }
+
+    return result;
+}
+
 function resolveConditions(data: Data, conditions: Conditions, namedConditionals: Conditional[]): Data {
     switch (conditions.relationship) {
         case undefined:
         case ConditionsRelationship.And:
             return resolveAndConditionals(data, conditions.conditions, namedConditionals);
         case ConditionsRelationship.Or:
-            return data;
+            return resolveOrConditionals(data, conditions.conditions, namedConditionals);
         case ConditionsRelationship.Xor:
             return data;
     }
 }
 
-export function query(data: Data, jsonql: Query): Data {
-    return resolveConditions(data, jsonql.cond, jsonql.named)
+export default function run(data: Data, query: Query): Data {
+    return resolveConditions(data, query.cond, query.named);
 }
