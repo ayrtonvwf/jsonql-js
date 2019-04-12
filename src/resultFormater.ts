@@ -10,7 +10,7 @@ function getRoot(data: Data, root: PropertyLocator): Data {
     const nextDepth = data.map((obj: { [key: string]: any }) => obj[currentProperty]);
 
     if (!root.length) {
-        return nextDepth;
+        return [].concat.apply([], nextDepth);
     }
 
     return getRoot(nextDepth, root);
@@ -21,5 +21,5 @@ export function formatResult(data: Data, limit: number, offset: number, root: Pr
         data = getRoot(data, root);
     }
 
-    return data.slice(offset, offset + limit);
+    return data.slice(offset, limit ? offset + limit : undefined);
 }

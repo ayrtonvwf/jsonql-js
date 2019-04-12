@@ -8,6 +8,8 @@ const data = require('./data/customers');
 describe('Nested Condition', () => {
     describe('Simple', () => {
         const query = {
+            limit: 0,
+            offset: 0,
             named: [
                 {
                     name: 'customerOfIdOne',

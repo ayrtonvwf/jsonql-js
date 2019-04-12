@@ -8,6 +8,8 @@ const data = require('./data/customers');
 describe('Or Condition', () => {
     describe('Simple', () => {
         const query = {
+            limit: 0,
+            offset: 0,
             named: [
                 {
                     name: 'customerOfIdOne',
@@ -50,6 +52,8 @@ describe('Or Condition', () => {
 
     describe('Overlapping', () => {
         const query = {
+            limit: 0,
+            offset: 0,
             named: [
                 {
                     name: 'customerOfIdOne',

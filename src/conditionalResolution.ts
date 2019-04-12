@@ -97,10 +97,7 @@ function resolveOrConditionals(data: Data, conditions: (string|Conditions)[], na
                 ...conditional,
                 operation: invertOperation(conditional.operation)
             };
-            console.log('Before exclusion:', data);
-            console.log('Excluded:', result);
             data = filterConditional(data, oppositeConditional);
-            console.log('After exclusion:', data);
         } else {
             result = result.concat(resolveConditions(data, condition, namedConditionals));
         }
