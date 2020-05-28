@@ -5,7 +5,7 @@ chai.should();
 import JsonQL from '../dist/JsonQL.js';
 const data = require('./data/customers');
 
-describe('Or Condition', () => {
+describe('And Condition', () => {
     const query = {
         limit: 0,
         offset: 0,
