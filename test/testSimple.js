@@ -2,7 +2,7 @@ import chai from 'chai';
 import {describe} from "mocha";
 chai.should();
 
-import jsonql from '../dist/index.js';
+import JsonQL from '../dist/JsonQL.js';
 const data = require('./data/customers');
 
 describe('Simple Condition', () => {
@@ -22,7 +22,8 @@ describe('Simple Condition', () => {
         }
     };
 
-    const result = jsonql(data, query);
+    const jsonql = new JsonQL();
+    const result = jsonql.run(data, query);
 
     it('should have one result', (done) => {
         result.should.have.lengthOf(1);
