@@ -1,6 +1,7 @@
-import { Data, Query} from './types';
 import { resolveConditions } from './conditionalResolution';
 import { formatResult } from "./resultFormater";
+import { Data } from './Types/Data';
+import { Query } from './Types/Query';
 
 export default function run(data: Data, query: Query): Data {
     if (query.cond) {

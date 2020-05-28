@@ -1,4 +1,8 @@
-import {Conditional, Conditions, ConditionsRelationship, Data, Operation} from './types';
+import { Operation } from "./Types/Operation";
+import { Data } from "./Types/Data";
+import { Conditional } from "./Types/Conditional";
+import { Conditions } from "./Types/Conditions";
+import { ConditionsRelationship } from "./Types/ConditionsRelationship";
 
 function invertOperation(operation: Operation): Operation {
     switch (operation) {

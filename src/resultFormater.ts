@@ -1,4 +1,5 @@
-import {Data, PropertyLocator} from './types';
+import { Data } from "./Types/Data";
+import { PropertyLocator } from "./Types/PropertyLocator";
 
 function getRoot(data: Data, root: PropertyLocator): Data {
     const currentProperty = root.shift();
