@@ -5,7 +5,7 @@ chai.should();
 import JsonQL from '../dist/JsonQL.js';
 const data = require('./data/customers');
 
-describe('Simple Condition', () => {
+describe('Result Root', () => {
     const query = {
         limit: 0,
         offset: 0,
