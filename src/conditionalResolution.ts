@@ -46,7 +46,9 @@ export default class ConditionalResolver {
                 return !RegExp(over).test(value);
         }
     }
-
+    /**
+     * in the first call, data is an array of objects, but in the recursive calls, data is an object
+     */
     private filterConditional(data: Data, conditional: Conditional): Data {
         if (conditional.value.length === 1) {
             return data.filter((object: { [key: string]: any }) =>
@@ -55,14 +57,20 @@ export default class ConditionalResolver {
         }
 
         const [currentProperty] = conditional.value;
+        const newConditional = {
+            ...conditional,
+            value: conditional.value.slice(1),
+        };
 
         if (currentProperty === undefined) {
             throw new Error("No properties left to filter");
         }
 
-        // @ts-ignore
+        /**
+         * this looks wrong, because the first time this function is called, the data is an array of objects, but in the recursive calls, data is an object therefore their indexes arent numbers
+         */
         data[currentProperty] = data[currentProperty].map(partialData =>
-            this.filterConditional(partialData, conditional)
+            this.filterConditional(partialData, newConditional)
         );
 
         return data;
