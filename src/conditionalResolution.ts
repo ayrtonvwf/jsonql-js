@@ -54,10 +54,7 @@ export default class ConditionalResolver {
             )
         }
 
-        const newConditional: Conditional = {
-            ...conditional
-        };
-        const currentProperty = conditional.value.shift();
+        const [currentProperty] = conditional.value;
 
         if (currentProperty === undefined) {
             throw new Error("No properties left to filter");
@@ -65,7 +62,7 @@ export default class ConditionalResolver {
 
         // @ts-ignore
         data[currentProperty] = data[currentProperty].map(partialData =>
-            this.filterConditional(partialData, newConditional)
+            this.filterConditional(partialData, conditional)
         );
 
         return data;
