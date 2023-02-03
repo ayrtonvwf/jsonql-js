@@ -26,17 +26,17 @@ describe('Result Root', () => {
     });
 
     it('should have the second item equal to the second car', (done) => {
-        result[0].should.equal(data[1].cars[0]);
+        result[1].should.equal(data[1].cars[0]);
         done();
     });
 
     it('should have the third item equal to the third car', (done) => {
-        result[0].should.equal(data[1].cars[1]);
+        result[2].should.equal(data[1].cars[1]);
         done();
     });
 
     it('should have the fourth item equal to the fourth car', (done) => {
-        result[0].should.equal(data[2].cars[0]);
+        result[3].should.equal(data[2].cars[0]);
         done();
     });
 });

@@ -69,6 +69,7 @@ export default class ConditionalResolver {
         /**
          * this looks wrong, because the first time this function is called, the data is an array of objects, but in the recursive calls, data is an object therefore their indexes arent numbers
          */
+        // @ts-ignore
         data[currentProperty] = data[currentProperty].map(partialData =>
             this.filterConditional(partialData, newConditional)
         );
